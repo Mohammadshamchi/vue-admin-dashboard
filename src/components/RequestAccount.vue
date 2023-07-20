@@ -1,4 +1,12 @@
 <template>
+  <div id="app">
+    <link
+      href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
+  </div>
   <transition name="slide-in-right" enter-active-class="animated slideInRight ">
     <div
       v-if="show"
