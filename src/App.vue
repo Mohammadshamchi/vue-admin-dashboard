@@ -1,18 +1,48 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <nav></nav>
   <router-view />
 </template>
+<script>
+import "animate.css";
+// App.vue
+export default {
+  name: "App",
+  watch: {
+    isDarkMode(newVal) {
+      document.body.style.background = newVal ? "#212c4f" : "#f0f3f5";
+    },
+  },
+  computed: {
+    isDarkMode() {
+      return this.$store.getters.isDarkMode;
+    },
+  },
+  mounted() {
+    document.body.style.background = this.isDarkMode ? "#212c4f" : "#f0f3f5";
+  },
+};
+</script>
 
 <style lang="scss">
+* {
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+body {
+  background-color: $dark-blue;
+}
+
+h1 {
+  @include heading-1;
+}
+
+p {
+  @include mamad-style($white);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: $system-font-family;
   text-align: center;
-  color: #2c3e50;
+  color: $white;
 }
 
 nav {
@@ -20,7 +50,7 @@ nav {
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: $white;
 
     &.router-link-exact-active {
       color: #42b983;
