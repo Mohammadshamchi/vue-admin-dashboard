@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~animate.css/animate.min.css";
+
+@import "~animate.css";
 * {
   transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }

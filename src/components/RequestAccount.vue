@@ -1,8 +1,5 @@
 <template>
-  <transition
-    name="slide-in-right"
-    enter-active-class="animated slideInRight animate__delay-2s	2s"
-  >
+  <transition name="slide-in-right" enter-active-class="animated slideInRight ">
     <div
       v-if="show"
       class="request"
@@ -34,7 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~animate.css/animate.css";
 .request {
   position: absolute;
   top: 40px;
