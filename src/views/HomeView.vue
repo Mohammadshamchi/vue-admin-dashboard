@@ -42,23 +42,6 @@
         style="border: 0"
         allowfullscreen
       ></iframe>
-      <iframe
-        v-if="isDarkMode"
-        width="600"
-        height="450"
-        src="https://datastudio.google.com/embed/reporting/12VV95wfJ9-kW8pskiGHrrl5_GlVD5xkJ/page/R8xh"
-        frameborder="0"
-        style="border: 0"
-        allowfullscreen
-      ></iframe>
-      <iframe
-        width="600"
-        height="450"
-        src="https://lookerstudio.google.com/embed/reporting/c7df7866-4b6e-457f-911f-9fd614fa47ad/page/9vjXD"
-        frameborder="0"
-        style="border: 0"
-        allowfullscreen
-      ></iframe>
     </div>
   </div>
 </template>

@@ -57,23 +57,34 @@ export default {
   methods: {
     onSubmit() {
       const email = this.email;
-      // Slack API logic here
-      let slackURL = new URL("https://slack.com/api/chat.postMessage");
+      let slackURL = "https://slack.com/api/chat.postMessage";
       const data = {
-        token: "xoxb-5627446277249-5627455001905-qGodGlf4lMxMD3lf31lxrZX6",
         channel: "blockz",
         text: `${email} has requested admin access to BLOK-Z`,
       };
-      slackURL.search = new URLSearchParams(data);
-      fetch(slackURL)
-        .then(() => {
-          this.$router.push({
-            name: "signin",
-            params: {
-              userRequestedAccount: true,
-              email: email,
-            },
-          });
+      fetch(slackURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "xoxb-5627446277249-5627455001905-ha6rP5ilHq8zxTL3QKFKjF2l",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json()) // Add this line to parse the response
+        .then((data) => {
+          if (data.ok) {
+            // If Slack API responds with ok: true
+            this.$router.push({
+              name: "signin",
+              params: {
+                userRequestedAccount: true,
+                email: email,
+              },
+            });
+          } else {
+            alert("Error sending to Slack: " + data.error); // Display Slack's error message
+          }
         })
         .catch((error) => {
           alert("Error: " + error);
