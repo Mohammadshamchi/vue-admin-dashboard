@@ -52,10 +52,9 @@
         allowfullscreen
       ></iframe>
       <iframe
-        v-if="!isDarkMode"
         width="600"
         height="450"
-        src="https://datastudio.google.com/embed/reporting/1OX46PfUsV3Ad20eNDTvnFOBbq3m57hK6/page/R8xh"
+        src="https://lookerstudio.google.com/embed/reporting/c7df7866-4b6e-457f-911f-9fd614fa47ad/page/9vjXD"
         frameborder="0"
         style="border: 0"
         allowfullscreen
@@ -65,8 +64,9 @@
 </template>
 
 <script>
-import VueApexCharts from "vue-apexcharts";
+// import VueApexCharts from "vue-apexcharts";
 import HeaderDashboard from "@/components/Header.vue";
+import VueApexCharts from "vue3-apexcharts";
 
 export default {
   name: "HomeView",
