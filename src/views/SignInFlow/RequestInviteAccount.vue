@@ -60,8 +60,7 @@ export default {
       // Slack API logic here
       let slackURL = new URL("https://slack.com/api/chat.postMessage");
       const data = {
-        token:
-          "xoxp-5627446277249-5614696152275-5627620159169-68d1d0c1640d6aa222fb8666d5b5f826",
+        token: "xoxb-5261834223427-5612116014677-zv2RH1iAVUTw3bTOW4mruRdI",
         channel: "blockz",
         text: `${email} has requested admin access to BLOK-Z`,
       };
