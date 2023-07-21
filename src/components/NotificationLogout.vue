@@ -1,4 +1,9 @@
 <template>
+  <link
+    href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2"
+    rel="stylesheet"
+    type="text/css"
+  />
   <transition
     enter-active-class="animated fadeInDown"
     leave-active-class="animated fadeOutRight"

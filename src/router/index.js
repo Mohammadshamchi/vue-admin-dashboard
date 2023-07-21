@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import TeamView from "@/views/TeamView";
 import SignIn from "../views/SignInFlow/SignIn";
-import RequestAccount from "../views/SignInFlow/RequestAccount";
+import RequestInviteAccount from "../views/SignInFlow/RequestInviteAccount";
+// import RequestAccount from "../views/SignInFlow/RequestAccount";
 import RecoverAccount from "../views/SignInFlow/RecoverAccount";
 import * as netlifyIdentityWidget from "netlify-identity-widget";
 
@@ -29,12 +30,12 @@ const routes = [
     component: SignIn,
   },
   {
-    path: "/signin",
-    name: "requestAccount",
-    component: RequestAccount,
+    path: "/request",
+    name: "RequestInviteAccount",
+    component: RequestInviteAccount,
   },
   {
-    path: "/signin",
+    path: "/recover",
     name: "recoverAccount",
     component: RecoverAccount,
   },

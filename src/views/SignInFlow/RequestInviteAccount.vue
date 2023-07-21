@@ -7,13 +7,11 @@
     class="container"
     :class="{ 'light-background': !isDarkMode, 'dark-background': isDarkMode }"
   >
-    <NotificationLogout v-if="hasText" :text="text" />
-    <RequestAccount />
     <div class="login">
       <img src="@/assets/blok-z_logo_white.svg" alt="" v-show="isDarkMode" />
       <img src="@/assets/blok-z-dark.svg" alt="" v-show="!isDarkMode" />
       <h4 :class="{ 'light-text': isDarkMode, 'dark-text': !isDarkMode }">
-        Sign into Blok-Z
+        Request Account
       </h4>
       <form @submit.prevent="onSubmit">
         <input
@@ -23,19 +21,12 @@
           v-model="email"
           required
         />
-        <input
-          type="password"
-          placeholder="Password"
-          :class="{ 'light-field': isDarkMode, 'dark-field': !isDarkMode }"
-          v-model="password"
-          required
-        />
-        <button>Sign In</button>
+        <button>Request Account</button>
       </form>
       <router-link
-        to="/recover"
+        to="/signin"
         :class="({ 'light-link': isDarkMode }, { 'dark-link': !isDarkMode })"
-        >Forgot your password?</router-link
+        >Already have an Blok-Z account? Sign in now.</router-link
       >
       <ThemeSwitch />
     </div>
@@ -43,17 +34,12 @@
 </template>
 
 <script>
-import RequestAccount from "@/components/RequestAccount";
 import ThemeSwitch from "@/components/ThemeSwitch";
-import NotificationLogout from "@/components/NotificationLogout.vue";
-import { auth } from "@/main";
 
 export default {
-  name: "SignIn",
+  name: "RequestAccount",
   components: {
-    RequestAccount,
     ThemeSwitch,
-    NotificationLogout,
   },
   data() {
     return {
@@ -71,12 +57,24 @@ export default {
   methods: {
     onSubmit() {
       const email = this.email;
-      const password = this.password;
-
-      auth
-        .login(email, password, true)
+      // Slack API logic here
+      let slackURL = new URL("https://slack.com/api/chat.postMessage");
+      const data = {
+        token:
+          "xoxp-5627446277249-5614696152275-5627620159169-68d1d0c1640d6aa222fb8666d5b5f826",
+        channel: "blockz",
+        text: `${email} has requested admin access to BLOK-Z`,
+      };
+      slackURL.search = new URLSearchParams(data);
+      fetch(slackURL)
         .then(() => {
-          this.$router.replace("/");
+          this.$router.push({
+            name: "signin",
+            params: {
+              userRequestedAccount: true,
+              email: email,
+            },
+          });
         })
         .catch((error) => {
           alert("Error: " + error);
@@ -88,13 +86,6 @@ export default {
     if (params.userLoggedOut) {
       this.hasText = true;
       this.text = "You have logged out";
-    } else if (params.userRecoveredAccount) {
-      this.hasText = true;
-      this.text = `A recovery email has been Sent ${params.email}`;
-    } else if (params.userRequestedAccount) {
-      this.hasText = true;
-
-      this.text = `Your Request Has been sent to BLOK-Z`;
     }
   },
 };

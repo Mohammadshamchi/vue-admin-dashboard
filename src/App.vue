@@ -25,6 +25,7 @@ export default {
 
 <style lang="scss">
 @import "~animate.css/animate.min.css";
+@import "~animate.css/animate.min.css";
 
 @import "~animate.css";
 * {
