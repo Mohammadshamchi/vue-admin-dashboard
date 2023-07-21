@@ -67,7 +67,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           Authorization:
-            "xoxb-5627446277249-5627455001905-ha6rP5ilHq8zxTL3QKFKjF2l",
+            "xoxp-5627446277249-5614696152275-5616917579539-6b3c7a4dd97a1947e2ab06bcf3274553",
         },
         body: JSON.stringify(data),
       })
