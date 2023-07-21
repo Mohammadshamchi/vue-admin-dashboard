@@ -1,4 +1,9 @@
 <template>
+  <link
+    href="https://cdn.jsdelivr.net/npm/apexcharts@3.2.2/dist/apexcharts.min.css"
+    rel="stylesheet"
+  />
+
   <nav></nav>
   <router-view />
 </template>

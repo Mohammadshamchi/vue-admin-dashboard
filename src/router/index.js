@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "@/views/HomeView.vue";
 import TeamView from "@/views/TeamView";
 import SignIn from "../views/SignInFlow/SignIn";
 import RequestInviteAccount from "../views/SignInFlow/RequestInviteAccount";
@@ -10,7 +10,7 @@ import * as netlifyIdentityWidget from "netlify-identity-widget";
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "HomeView",
     component: HomeView,
     meta: {
       requiresAuth: true,
